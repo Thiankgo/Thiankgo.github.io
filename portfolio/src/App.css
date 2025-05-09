@@ -377,6 +377,7 @@ body,
   .media-container {
     width: 100%;
     max-width: 100%;
+    overflow: visible;
   }
 
   .media-container .card-video,
@@ -386,6 +387,7 @@ body,
   }
 
   .content-card .text {
+    margin-top: 20px;
     width: 100%;
     padding: 1rem;
     text-align: center;
@@ -407,6 +409,15 @@ body,
   .dots {
     margin-top: 20px;
     margin-bottom: 20px;
+  }
+
+  .dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    cursor: pointer;
+    transition: background 0.2s;
   }
 
   .linkedin-icon {
