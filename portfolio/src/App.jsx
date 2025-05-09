@@ -53,7 +53,7 @@ const CONTENT = {
       media: [gameDev1],
       title: 'Roguelike Shooter',
       subtitles: [{ name: 'Game Maker', icon: svg1 }],
-      text: `Jogo desenvolvido por mim que possui sistema de combate por tiros, com geração de nível procedural com 5+ andares, 20+ armas com habilidades diferentes, 40+ items que mudam gameplay completamente, vários inimigos e NPCs planejados. Possui um shader de luz especializado com sombras projetadas, engine própria para criação de salas, inimigos com IA de movimento e combate em componentes e inúmeras sinergias entre items, armas e aliados. Hoje na fase ALFA, em breve o BETA será lançado.`,
+      text: `Jogo com código desenvolvido por mim que possui sistema de combate por tiros, com geração de nível procedural com 5+ andares, 20+ armas com habilidades diferentes, 40+ items que mudam gameplay completamente, vários inimigos e NPCs planejados. Possui um shader de luz especializado com sombras projetadas, engine própria para criação de salas, inimigos com IA de movimento e combate em componentes e inúmeras sinergias entre items, armas e aliados. Hoje na fase ALFA, em breve o BETA será lançado.`,
     },
     {
       media: [gameDev2],
