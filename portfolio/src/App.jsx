@@ -51,11 +51,10 @@ Implementa RBAC, filtros avançados e testes e2e.`,
   ],
   'GAME DEV': [
     {
-      media: [gameDev1, gameDev2],
+      media: [gameDev1, gameDev2, gameDev2],
       title: 'Roguelike Shooter',
       subtitles: [{ name: 'Game Maker', icon: svg1 }],
-      text: `Jogo com geração procedural de níveis, 20+ armas únicas, 
-40+ itens especiais e IA variada. Fase ALFA.`,
+      text: `Jogo desenvolvido por mim que possui sistema de combate por tiros, com geração de nível procedural com 5+ andares, 20+ armas com habilidades diferentes, 40+ items que mudam gameplay completamente, vários inimigos e NPCs planejados. Hoje na fase ALFA, em breve o BETA será lançado.`,
     },
     {
       media: [gameDev1, gameDev2],
@@ -115,26 +114,50 @@ function App() {
     return [ref, isInView];
   }
 
+  function useWindowSize() {
+    const [size, setSize] = useState({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    });
+
+    useEffect(() => {
+      function handleResize() {
+        setSize({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        });
+      }
+
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    return size;
+  }
+
+  const { width } = useWindowSize();
+  const isMobile = width <= 768;
+
   useEffect(() => {
     [...document.querySelectorAll('.card-letter')].forEach((el, i) => {
       el.classList.remove('animate'); void el.offsetWidth;
       setTimeout(() => el.classList.add('animate'), i * 4);
     });
-  }, [activeTab, cardIdx, mIdx]);
+  }, [activeTab, cardIdx]);
 
   useEffect(() => {
     [...document.querySelectorAll('.card-letterh4')].forEach((el, i) => {
       el.classList.remove('animate'); void el.offsetWidth;
       setTimeout(() => el.classList.add('animate'), i * 4);
     });
-  }, [activeTab, cardIdx, mIdx]);
+  }, [activeTab, cardIdx]);
 
   useEffect(() => {
     [...document.querySelectorAll('.card-letterh3')].forEach((el, i) => {
       el.classList.remove('animate'); void el.offsetWidth;
       setTimeout(() => el.classList.add('animate'), i * 4);
     });
-  }, [activeTab, cardIdx, mIdx]);
+  }, [activeTab, cardIdx]);
 
   // Clear placeholder on media load
   const handleMediaLoaded = () => {
@@ -159,15 +182,31 @@ function App() {
         <h2>PORTFOLIO</h2>
         <nav className="tabs">
           {TABS.map(tab => (
-            <button key={tab} className={tab === activeTab ? 'tab active' : 'tab'} onClick={() => setActiveTab(tab)}>
-              {[...tab].map((c, i) => <span key={i} className="tab-letter">{c}</span>)}
+            <button
+              key={tab}
+              className={tab === activeTab ? 'tab active' : 'tab'}
+              onClick={(e) => {
+                setActiveTab(tab);
+
+                // Bounce animation on tab click
+                const letters = Array.from(e.currentTarget.querySelectorAll('.tab-letter'));
+                letters.forEach((el, i) => {
+                  el.classList.remove('animate');
+                  void el.offsetWidth;
+                  setTimeout(() => el.classList.add('animate'), i * 50);
+                });
+              }}
+            >
+              {[...tab].map((char, i) => (
+                <span key={i} className="tab-letter">{char}</span>
+              ))}
             </button>
           ))}
         </nav>
       </header>
 
       {/* Content Card */}
-      <main className="content-card">
+      <main className="content-card" style={{ flexDirection: isMobile ? 'column' : 'row' }}>
         <div className="media-container" ref={mediaContainerRef}>
           {isVideo ? (
             <div ref={videoRef} style={{ width: '100%' }}>
@@ -220,7 +259,11 @@ function App() {
           {/* Card dots */}
           <div className="dots">
             {cards.map((_, i) => (
-              <span key={i} className={i === cardIdx ? 'dot active' : 'dot'} onClick={() => handleCardDot(i)} />
+              <span
+                key={i}
+                className={i === cardIdx ? 'dot active' : 'dot'}
+                onClick={() => handleCardDot(i)}
+              />
             ))}
           </div>
         </div>

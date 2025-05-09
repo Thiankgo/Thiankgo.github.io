@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'InterBoldOutline';
+  src: url('./assets/Inter-Bold_OutlineReady.ttf') format('truetype');
+  font-weight: 900;
+  font-style: bold;
+}
+
+
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wdth,wght@200,900&display=swap');
 
 :root {
@@ -24,7 +32,7 @@ body,
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Inter', sans-serif;
+  font-family: 'InterBoldOutline', sans-serif;
 }
 
 .portfolio-header {
@@ -36,7 +44,7 @@ body,
 }
 
 .portfolio-header h1 {
-  font-family: 'Inter', sans-serif;
+  font-family: 'InterBoldOutline', sans-serif;
   font-weight: 900;
   font-size: 96px;
   letter-spacing: 2px;
@@ -67,7 +75,7 @@ body,
   margin-right: 70px;
   background-color: var(--bg-color-dark);
   border: none;
-  font-family: 'Inter', sans-serif;
+  font-family: 'InterBoldOutline', sans-serif;
   font-weight: 900;
   font-size: 24px;
   color: var(--text-light);
@@ -141,7 +149,7 @@ body,
 }
 
 .content-card .text h3 {
-  font-family: 'Inter', sans-serif;
+  font-family: 'InterBoldOutline', sans-serif;
   font-weight: 900;
   font-size: 32px;
   margin-bottom: 0.5rem;
@@ -149,7 +157,7 @@ body,
 
 .content-card .text h4,
 .content-card .text p {
-  font-family: 'Inter', sans-serif;
+  font-family: 'InterBoldOutline', sans-serif;
   font-weight: 900;
 }
 
@@ -161,7 +169,7 @@ body,
 
 .content-card .text p {
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 2;
 }
 
 .media-container {
@@ -288,5 +296,80 @@ body,
 @keyframes fadeOut {
   to {
     opacity: 0;
+  }
+}
+
+/* ========= MOBILE STYLES ========= */
+@media (max-width: 768px) {
+  .portfolio-header h1 {
+    font-size: 48px;
+    -webkit-text-stroke: 2px white;
+  }
+
+  .portfolio-header h2 {
+    font-size: 18px;
+  }
+
+  .tabs {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+  }
+
+  .tab {
+    width: 100px;
+    height: 40px;
+    font-size: 12px;
+    margin-right: 0;
+  }
+
+  .content-card {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+
+  .media-container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .media-container .card-video,
+  .media-container .card-media {
+    aspect-ratio: 1 / 1;
+    max-height: none;
+  }
+
+  .content-card .text {
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .content-card .text h3 {
+    font-size: 24px;
+  }
+
+  .content-card .text h4 {
+    font-size: 14px;
+  }
+
+  .content-card .text p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .dots {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .linkedin-icon {
+    width: 40px;
+    height: 40px;
+    bottom: 15px;
+    left: 15px;
   }
 }
