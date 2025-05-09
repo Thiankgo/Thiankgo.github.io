@@ -43,13 +43,38 @@ body,
   margin-top: 35px;
 }
 
+
+@keyframes H1Appear {
+  0% {
+    opacity: 0%;
+  }
+
+  100% {
+    opacity: 100%;
+  }
+}
+
 .portfolio-header h1 {
   font-family: 'InterBoldOutline', sans-serif;
   font-weight: 900;
   font-size: 96px;
   letter-spacing: 2px;
   color: transparent;
-  -webkit-text-stroke: 3px white;
+  -webkit-text-stroke: 2px white;
+  animation: H1Appear 1.2s ease-in forwards;
+}
+
+
+@keyframes H2Appear {
+  0% {
+    opacity: 50%;
+    letter-spacing: 10px;
+  }
+
+  100% {
+    opacity: 100%;
+    letter-spacing: normal;
+  }
 }
 
 .portfolio-header h2 {
@@ -58,6 +83,7 @@ body,
   font-size: 24px;
   text-transform: uppercase;
   margin-top: -10px;
+  animation: H2Appear 1s ease-in forwards;
 }
 
 .tabs {
@@ -101,7 +127,7 @@ body,
   }
 
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
     color: var(--text-light-bounce);
   }
 
@@ -112,7 +138,7 @@ body,
 }
 
 .tab-letter.animate {
-  animation: letterBounce 0.2s ease;
+  animation: letterBounce 0.12s ease;
 }
 
 .card-letter.animate {
@@ -141,6 +167,7 @@ body,
 }
 
 .content-card .text {
+  width: 600px;
   flex: 1;
   padding: 2rem;
   display: flex;
@@ -175,15 +202,19 @@ body,
 .media-container {
   max-width: 550px;
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  aspect-ratio: 1 / 1;
+  background-color: transparent;  /* cor de placeholder */
 }
 
 /* força proporção 1:1 e evita overflow */
 .media-container .card-video,
 .media-container .card-media {
   width: 100%;
+  height: auto;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   object-position: center;
@@ -213,10 +244,7 @@ body,
   display: block;
   position: absolute;
   inset: 0;
-  background: #000;           /* cor sólida enquanto carrega */
-  /* Se preferir, pode usar um SVG de spinner:
-     background: url('/path/to/spinner.svg') no-repeat center center; 
-  */
+  background: #050129;
   z-index: 1;
 }
 
@@ -251,6 +279,20 @@ body,
 
 .dot.active {
   background: var(--accent);
+}
+
+.subtitle-container {
+  display: flex;
+  flex-wrap: wrap; /* permite quebra somente se necessário */
+  gap: 0.5rem; /* espaçamento entre os subtítulos */
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle-with-icon {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap; /* impede quebra dentro do subtítulo */
 }
 
 .subtitle-with-icon img {
@@ -344,6 +386,7 @@ body,
   }
 
   .content-card .text {
+    width: 100%;
     padding: 1rem;
     text-align: center;
   }
