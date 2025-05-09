@@ -28,7 +28,7 @@ const CONTENT = {
         { name: 'ESP-IDF', icon: svg1 },
         { name: 'STMCubeX', icon: svg1 }
       ],
-      text: `Editor braille digital com 28 células táteis, displays OLED para acompanhamento visual em tinta e feedback sonoro em tempo real. Integra áudio em português, feedback tátil por vibração e navegação por botões físicos. Comunicação com o app via Wi-Fi, com suporte a sincronização e configurações. Projeto baseado em ESP32 e STM32 com ESP-IDF e STM32Cube. Projeto realizado pelo Instituto Iracema para auxiliar no ensino de braille para crianças cegas.`,
+      text: `Editor braille digital com 28 celas braille, displays OLED para acompanhamento visual em tinta e feedback sonoro em tempo real. Integra áudio em português, feedback tátil por vibração e navegação por botões físicos. Comunicação com o app via Wi-Fi, com suporte a sincronização e configurações. Projeto baseado em ESP32 e STM32 com ESP-IDF e STM32Cube. Projeto realizado pelo Instituto Iracema para auxiliar no ensino de braille para crianças cegas.`,
     }
   ],
   //   SOFTWARE: [
@@ -78,6 +78,9 @@ function App() {
   const mIdx = mediaIndex[activeTab];
   const currentMedia = media[mIdx];
 
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+
   const handleCardDot = (newIdx) => {
     setCardIndex(prev => ({ ...prev, [activeTab]: newIdx }));
     // reset media idx when card changes
@@ -85,6 +88,7 @@ function App() {
   };
 
   const handleMediaDot = (newIdx) => {
+    mediaContainerRef.current?.classList.remove('loaded');
     setMediaIndex(prev => ({ ...prev, [activeTab]: newIdx }));
   };
 
@@ -111,6 +115,19 @@ function App() {
 
   const { width } = useWindowSize();
   const isMobile = width <= 768;
+
+  // Swipe handlers
+  const onTouchStart = (e) => { touchStartX.current = e.touches[0].clientX; };
+  const onTouchMove = (e) => { touchEndX.current = e.touches[0].clientX; };
+  const onTouchEnd = () => {
+    const dx = touchEndX.current - touchStartX.current;
+    if (Math.abs(dx) > 50) {
+      const dir = dx < 0 ? 1 : -1;
+      const len = media.length;
+      const newIdx = (mIdx + dir + len) % len;
+      handleMediaDot(newIdx);
+    }
+  };
 
   useEffect(() => {
     [...document.querySelectorAll('.card-letter')].forEach((el, i) => {
@@ -141,9 +158,6 @@ function App() {
   };
 
   const isVideo = typeof currentMedia === 'string' && currentMedia.endsWith('.mp4');
-
-  const renderSpans = (str, className) =>
-    str.split('').map((char, i) => <span key={i} className={className}>{char}</span>);
 
   return (
     <div className="App">
@@ -181,7 +195,32 @@ function App() {
 
       {/* Content Card */}
       <main className="content-card" style={{ flexDirection: isMobile ? 'column' : 'row' }}>
-        <div className="media-container" ref={mediaContainerRef}>
+        <div
+          className="media-container"
+          ref={mediaContainerRef}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
+          <svg
+            className="media-loading"
+            viewBox="0 0 50 50"
+            aria-hidden="true"
+          >
+            <circle
+              cx="25" cy="25" r="20"
+              stroke="white" strokeWidth="5"
+              fill="none"
+              strokeDasharray="31.4 31.4"
+              strokeDashoffset="0"
+            >
+              <animate
+                attributeName="stroke-dashoffset"
+                from="0" to="60"
+                dur="1s" repeatCount="indefinite"
+              />
+            </circle>
+          </svg>
           {isVideo ? (
             <video
               key={currentMedia}
@@ -230,7 +269,7 @@ function App() {
 
         {/* Text */}
         <div className="text">
-          <h3>{renderSpans(title, 'card-letterh3')}</h3>
+          <h3>{title}</h3>
           {/* <h3>{title}</h3> */}
           <div className="subtitle-container">
             {subtitles.map((sub, i) => (
@@ -240,7 +279,7 @@ function App() {
               </h4>
             ))}
           </div>
-          <p>{renderSpans(text, 'card-letter')}</p>
+          <p>{text}</p>
           {/* <p>{text}</p> */}
 
           {/* Card dots */}

@@ -9,8 +9,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wdth,wght@200,900&display=swap');
 
 :root {
-  --bg-color: #062033;
-  --bg-color-dark: #051826;
+  --bg-color: #0a386d;
+  --bg-color-dark: #124061;
   --card-bg: #000000;
   --text-light: #ffffff;
   --text-light-bounce: #FF9F1C;
@@ -59,6 +59,7 @@ body,
   font-weight: 900;
   font-size: 96px;
   letter-spacing: 2px;
+  line-height: 0.9;
   color: transparent;
   -webkit-text-stroke: 2px white;
   animation: H1Appear 1.2s ease-in forwards;
@@ -82,7 +83,7 @@ body,
   font-weight: 900;
   font-size: 24px;
   text-transform: uppercase;
-  margin-top: -10px;
+  margin-top: 0px;
   animation: H2Appear 1s ease-in forwards;
 }
 
@@ -191,7 +192,7 @@ body,
 .content-card .text h4 {
   font-size: 16px;
   opacity: 0.8;
-  margin-bottom: 1rem;
+  margin-bottom: 0.3rem;
 }
 
 .content-card .text p {
@@ -244,7 +245,16 @@ body,
   display: block;
   position: absolute;
   inset: 0;
-  background: #050129;
+  background: #00000000;
+  z-index: 1;
+}
+
+.media-loading {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 40px;
+  height: 40px;
   z-index: 1;
 }
 
@@ -286,7 +296,7 @@ body,
   flex-wrap: wrap; /* permite quebra somente se necessário */
   gap: 0.5rem; /* espaçamento entre os subtítulos */
   align-items: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .subtitle-with-icon {
@@ -406,9 +416,14 @@ body,
     line-height: 1.6;
   }
 
+  .media-dots{
+    gap: 1rem;
+  }
+
   .dots {
     margin-top: 20px;
     margin-bottom: 20px;
+    gap: 1rem;
   }
 
   .dot {
