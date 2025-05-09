@@ -86,7 +86,7 @@ const CustomPaletteMaterial = shaderMaterial(
 
 extend({ CustomPaletteMaterial })
 
-function ShaderPlane({ palette }) {
+function ShaderPlane() {
   const matRef = useRef()
   const { size, viewport, clock } = useThree()
 
@@ -112,9 +112,7 @@ function ShaderPlane({ palette }) {
   )
 }
 
-export default function BackgroundShader({
-  palette = ['#011627', '#7B00FF', '#011627', '#00D9FF']
-}) {
+export default function BackgroundShader() {
   return (
     <Canvas
       orthographic
@@ -128,7 +126,7 @@ export default function BackgroundShader({
         zIndex: 0
       }}
     >
-      <ShaderPlane palette={palette} />
+      <ShaderPlane/>
     </Canvas>
   )
 }

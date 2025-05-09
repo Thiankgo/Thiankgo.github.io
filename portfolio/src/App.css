@@ -16,7 +16,8 @@
   box-sizing: border-box;
 }
 
-body, .App {
+body,
+.App {
   background-color: var(--bg-color);
   min-height: 100vh;
   color: var(--text-light);
@@ -90,10 +91,12 @@ body, .App {
     transform: translateY(0);
     color: var(--text-light);
   }
+
   50% {
     transform: translateY(-10px);
     color: var(--text-light-bounce);
   }
+
   100% {
     transform: translateY(0);
     color: var(--text-light);
@@ -104,23 +107,29 @@ body, .App {
   animation: letterBounce 0.2s ease;
 }
 
+.card-letter.animate {
+  animation: letterBounce 0.2s ease;
+}
+
+.card-letterh3.animate {
+  animation: letterBounce 0.2s ease;
+}
+
+.card-letterh4.animate {
+  animation: letterBounce 0.2s ease;
+}
+
 .content-card {
   background-color: var(--card-bg);
   width: 100%;
   max-width: 1200px;
-  height: 600px;
+  height: 620px;
   display: flex;
   padding: 20px;
   border-radius: 0;
   box-shadow: none;
   overflow: hidden;
   z-index: 1;
-}
-
-.content-card img {
-  width: 50%;
-  height: 100%;
-  object-fit: cover;
 }
 
 .content-card .text {
@@ -153,7 +162,66 @@ body, .App {
 .content-card .text p {
   font-size: 16px;
   line-height: 1.5;
-  color: var(--text-muted);
+}
+
+.media-container {
+  max-width: 550px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* força proporção 1:1 e evita overflow */
+.media-container .card-video,
+.media-container .card-media {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center;
+  max-height: 550px;
+}
+
+.card-video video, .card-media img{
+  width: 100%;
+}
+
+/* centraliza os dots e dá espaçamento */
+.media-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.media-container {
+  position: relative;         /* já deve ter isso para overlay */
+  overflow: hidden;
+}
+
+/* Cria um “background” ou animação de loading */
+.media-container::before {
+  content: '';
+  display: block;
+  position: absolute;
+  inset: 0;
+  background: #000;           /* cor sólida enquanto carrega */
+  /* Se preferir, pode usar um SVG de spinner:
+     background: url('/path/to/spinner.svg') no-repeat center center; 
+  */
+  z-index: 1;
+}
+
+/* Quando o JS adicionar a classe .loaded, esconde o placeholder */
+.media-container.loaded::before {
+  display: none;
+}
+
+/* Garante que o vídeo e a imagem fiquem por cima do ::before */
+.media-container .card-video,
+.media-container .card-media {
+  position: relative;
+  z-index: 2;
 }
 
 .dots {
@@ -161,6 +229,7 @@ body, .App {
   justify-content: center;
   gap: 0.5rem;
   margin-top: auto;
+  margin-bottom: 90px;
 }
 
 .dot {
@@ -200,4 +269,24 @@ body, .App {
 
 .linkedin-icon:hover img {
   filter: invert(1) sepia(1);
+}
+
+#startup-fade {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  z-index: 9999;
+  opacity: 1;
+  pointer-events: none;
+  animation: fadeOut 0.4s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
 }
