@@ -31,23 +31,23 @@ const CONTENT = {
       text: `Editor braille digital com 28 células táteis, displays OLED para acompanhamento visual em tinta e feedback sonoro em tempo real. Integra áudio em português, feedback tátil por vibração e navegação por botões físicos. Comunicação com o app via Wi-Fi, com suporte a sincronização e configurações. Projeto baseado em ESP32 e STM32 com ESP-IDF e STM32Cube. Projeto realizado pelo Instituto Iracema para auxiliar no ensino de braille para crianças cegas.`,
     }
   ],
-//   SOFTWARE: [
-//     {
-//       media: [software1, software2],
-//       title: 'Web Dashboard',
-//       subtitles: [{ name: 'Front-end Developer', icon: svg1 }],
-//       text: `Aplicação React + TypeScript para monitoramento em tempo real 
-// de sensores industriais. Gráficos dinâmicos, autenticação JWT 
-// e deploy em Docker.`,
-//     },
-//     {
-//       media: [software1, software2],
-//       title: 'Admin Panel',
-//       subtitles: [{ name: 'Full-stack', icon: svg1 }],
-//       text: `Painel CRUD com Node.js, Express e PostgreSQL. 
-// Implementa RBAC, filtros avançados e testes e2e.`,
-//     }
-//   ],
+  //   SOFTWARE: [
+  //     {
+  //       media: [software1, software2],
+  //       title: 'Web Dashboard',
+  //       subtitles: [{ name: 'Front-end Developer', icon: svg1 }],
+  //       text: `Aplicação React + TypeScript para monitoramento em tempo real 
+  // de sensores industriais. Gráficos dinâmicos, autenticação JWT 
+  // e deploy em Docker.`,
+  //     },
+  //     {
+  //       media: [software1, software2],
+  //       title: 'Admin Panel',
+  //       subtitles: [{ name: 'Full-stack', icon: svg1 }],
+  //       text: `Painel CRUD com Node.js, Express e PostgreSQL. 
+  // Implementa RBAC, filtros avançados e testes e2e.`,
+  //     }
+  //   ],
   'GAME DEV': [
     {
       media: [gameDev1],
@@ -115,21 +115,21 @@ function App() {
   useEffect(() => {
     [...document.querySelectorAll('.card-letter')].forEach((el, i) => {
       el.classList.remove('animate'); void el.offsetWidth;
-      setTimeout(() => el.classList.add('animate'), i * 4);
+      setTimeout(() => el.classList.add('animate'), i * 1);
     });
   }, [activeTab, cardIdx]);
 
   useEffect(() => {
     [...document.querySelectorAll('.card-letterh4')].forEach((el, i) => {
       el.classList.remove('animate'); void el.offsetWidth;
-      setTimeout(() => el.classList.add('animate'), i * 4);
+      setTimeout(() => el.classList.add('animate'), i * 1);
     });
   }, [activeTab, cardIdx]);
 
   useEffect(() => {
     [...document.querySelectorAll('.card-letterh3')].forEach((el, i) => {
       el.classList.remove('animate'); void el.offsetWidth;
-      setTimeout(() => el.classList.add('animate'), i * 4);
+      setTimeout(() => el.classList.add('animate'), i * 1);
     });
   }, [activeTab, cardIdx]);
 
@@ -142,10 +142,13 @@ function App() {
 
   const isVideo = typeof currentMedia === 'string' && currentMedia.endsWith('.mp4');
 
+  const renderSpans = (str, className) =>
+    str.split('').map((char, i) => <span key={i} className={className}>{char}</span>);
+
   return (
     <div className="App">
       <div id="startup-fade" />
-      <BackgroundShader/>
+      <BackgroundShader />
 
       {/* Header & Tabs */}
       <header className="portfolio-header">
@@ -227,8 +230,8 @@ function App() {
 
         {/* Text */}
         <div className="text">
-          {/* <h3>{renderSpans(title, 'card-letterh3')}</h3> */}
-          <h3>{title}</h3>
+          <h3>{renderSpans(title, 'card-letterh3')}</h3>
+          {/* <h3>{title}</h3> */}
           <div className="subtitle-container">
             {subtitles.map((sub, i) => (
               <h4 key={i} className="subtitle-with-icon">
@@ -237,23 +240,26 @@ function App() {
               </h4>
             ))}
           </div>
-          {/* <p>{renderSpans(text, 'card-letter')}</p> */}
-          <p>{text}</p>
+          <p>{renderSpans(text, 'card-letter')}</p>
+          {/* <p>{text}</p> */}
 
           {/* Card dots */}
           <div className="dots">
-            {cards.map((_, i) => (
-              <span
-                key={i}
-                className={i === cardIdx ? 'dot active' : 'dot'}
-                onClick={() => handleCardDot(i)}
-              />
-            ))}
+            {cards.length > 1 ?
+
+              cards.map((_, i) => (
+                <span
+                  key={i}
+                  className={i === cardIdx ? 'dot active' : 'dot'}
+                  onClick={() => handleCardDot(i)}
+                />
+              ))
+
+              : <div />}
           </div>
         </div>
       </main>
 
-      {/* LinkedIn */}
       <a href="https://www.linkedin.com/in/thiago-de-sousa-paiva-755388161/" target="_blank" rel="noopener noreferrer" className="linkedin-icon">
         <img src={linkedinIcon} alt="LinkedIn" />
       </a>
