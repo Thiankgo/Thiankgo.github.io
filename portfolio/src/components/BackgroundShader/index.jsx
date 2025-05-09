@@ -8,10 +8,10 @@ const CustomPaletteMaterial = shaderMaterial(
   {
     uTime: 0,
     uResolution: new THREE.Vector2(),
-    uColorA: new THREE.Color(0.957, 0.804, 0.623),
-    uColorB: new THREE.Color(0.192, 0.384, 0.933),
-    uColorC: new THREE.Color(0.910, 0.510, 0.800),
-    uColorD: new THREE.Color(0.350, 0.710, 0.953),
+    uColorA: new THREE.Color(0.003, 0.086, 0.153),
+    uColorB: new THREE.Color(0.5, 0.0, 1.0),
+    uColorC: new THREE.Color(0.003, 0.086, 0.153),
+    uColorD: new THREE.Color(0.0, 0.710, 1.0),
     uGridSize: 1.0
   },
   // vertex shader
@@ -97,17 +97,6 @@ function ShaderPlane({ palette }) {
       matRef.current.uResolution.set(size.width, size.height)
     }
   })
-
-  // set das cores via props (e só quando mudarem)
-  useMemo(() => {
-    if (matRef.current && palette) {
-      const [A, B, C, D] = palette.map(c => new THREE.Color(c))
-      matRef.current.uColorA = A
-      matRef.current.uColorB = B
-      matRef.current.uColorC = C
-      matRef.current.uColorD = D
-    }
-  }, [palette])
 
   // escala para cobrir toda a viewport
   const scale = useMemo(
