@@ -1,18 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.74ea176d.css",
-    "main.js": "/static/js/main.dcb30558.js",
+    "main.css": "/static/css/main.73f70911.css",
+    "main.js": "/static/js/main.a1125fd1.js",
     "static/js/453.1407b060.chunk.js": "/static/js/453.1407b060.chunk.js",
+    "static/media/roguelike.mp4": "/static/media/roguelike.ddbd036ec096edaf4e48.mp4",
     "static/media/roguelike.png": "/static/media/roguelike.88d5e5504b08e145962a.png",
     "static/media/svg1.svg": "/static/media/svg1.ae2364c2751025e0f4c20b4e0ba5a19c.svg",
     "static/media/linkedin.svg": "/static/media/linkedin.fad6cb3b7ce0a6b6474fa2bc8ce52bc7.svg",
     "index.html": "/index.html",
-    "main.74ea176d.css.map": "/static/css/main.74ea176d.css.map",
-    "main.dcb30558.js.map": "/static/js/main.dcb30558.js.map",
+    "main.73f70911.css.map": "/static/css/main.73f70911.css.map",
+    "main.a1125fd1.js.map": "/static/js/main.a1125fd1.js.map",
     "453.1407b060.chunk.js.map": "/static/js/453.1407b060.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.74ea176d.css",
-    "static/js/main.dcb30558.js"
+    "static/css/main.73f70911.css",
+    "static/js/main.a1125fd1.js"
   ]
 }
