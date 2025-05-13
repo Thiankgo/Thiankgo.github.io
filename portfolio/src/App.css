@@ -5,7 +5,7 @@
   font-style: bold;
 }
 
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wdth,wght@200,900&display=swap');
 
 :root {
@@ -64,7 +64,6 @@ body,
   -webkit-text-stroke: 2px white;
   animation: H1Appear 1.2s ease-in forwards;
 }
-
 
 @keyframes H2Appear {
   0% {
@@ -311,7 +310,7 @@ body,
 
 .linkedin-icon {
   position: fixed;
-  bottom: 20px;
+  bottom: 40px;
   left: 20px;
   width: 60px;
   height: 60px;
@@ -319,16 +318,16 @@ body,
   transition: filter 0.3s ease;
 }
 
-.linkedin-icon img {
+.linkedin-icon svg {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: invert(1);
-  transition: filter 0.3s ease;
+  fill: white;
+  transition: fill 0.3s ease;
 }
 
-.linkedin-icon:hover img {
-  filter: invert(1) sepia(1);
+.linkedin-icon.black svg {
+  fill: black;
 }
 
 #startup-fade {
@@ -344,6 +343,61 @@ body,
   animation: fadeOut 0.4s ease-out forwards;
   animation-delay: 0.3s;
 }
+
+.about-me {
+  background: #ffffff;
+  color: #000000;
+  width: 100vw;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  z-index: 1;
+  font-family: 'Inter';
+}
+
+.about-me__photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+
+  margin: 0px 20px;
+}
+
+.about-me__block {
+  margin: auto;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  padding: 20px;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.about-me__info {
+  width: 100%;
+}
+
+.about-me__info h2 {
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.about-me__info p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 16px;
+  font-weight: 300;
+}
+
+.about-me__info p a {
+  color: var(--text-light-bounce);
+  font-weight: 900;
+}
+
 
 @keyframes fadeOut {
   to {
@@ -440,5 +494,38 @@ body,
     height: 40px;
     bottom: 15px;
     left: 15px;
+  }
+
+  .about-me {
+    flex-direction: column;    
+    align-items: center;
+    text-align: center;       
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+
+  .about-me__photo {
+    width: 100px;
+    height: 100px;        
+    margin: 0 auto;
+  }
+
+  .about-me__block {
+    flex-direction: column; 
+    padding: 1rem;
+  }
+
+  .about-me__info {
+    width: 100%;
+  }
+
+  .about-me__info h2 {
+    font-size: 1.5rem;  
+    margin-bottom: 0.75rem;
+  }
+
+  .about-me__info p {
+    font-size: 0.9rem;         
+    line-height: 1.4;
   }
 }
