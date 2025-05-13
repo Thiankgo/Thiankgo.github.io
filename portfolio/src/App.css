@@ -9,8 +9,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wdth,wght@200,900&display=swap');
 
 :root {
-  --bg-color: #0a386d;
-  --bg-color-dark: #124061;
+  --bg-color: #27193a;
+  --bg-color-dark: #321a53;
   --card-bg: #000000;
   --text-light: #ffffff;
   --text-light-bounce: #FF9F1C;
@@ -40,7 +40,7 @@ body,
   text-align: center;
   padding-bottom: 0;
   margin-bottom: 0;
-  margin-top: 35px;
+  margin-top: 64px;
 }
 
 
@@ -91,7 +91,7 @@ body,
   gap: 0;
   position: relative;
   top: 0;
-  margin-top: 60px;
+  margin-top: 64px;
   z-index: 1;
 }
 
@@ -310,7 +310,7 @@ body,
 
 .linkedin-icon {
   position: fixed;
-  bottom: 40px;
+  bottom: 20px;
   left: 20px;
   width: 60px;
   height: 60px;
@@ -347,13 +347,12 @@ body,
 .about-me {
   background: #ffffff;
   color: #000000;
-  width: 100vw;
-  padding: 2rem;
+  width: 99.25vw;
   display: flex;
   align-items: center;
-  gap: 2rem;
   z-index: 1;
   font-family: 'Inter';
+  padding-top: 32px;
 }
 
 .about-me__photo {

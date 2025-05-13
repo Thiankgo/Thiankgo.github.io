@@ -8,10 +8,10 @@ const CustomPaletteMaterial = shaderMaterial(
   {
     uTime: 0,
     uResolution: new THREE.Vector2(),
-    uColorA: new THREE.Color(0.003, 0.086, 0.153),
-    uColorB: new THREE.Color(0.5, 0.0, 1.0),
-    uColorC: new THREE.Color(0.003, 0.086, 0.153),
-    uColorD: new THREE.Color(0.0, 0.710, 1.0),
+    uColorA: new THREE.Color(54./255., 34./255., 62./255.),
+    uColorB: new THREE.Color(80./255., 250./255., 123./255.),
+    uColorC: new THREE.Color(54./255., 34./255., 62./255.),
+    uColorD: new THREE.Color(148./255., 75./255., 250./255.),
     uGridSize: 1.0
   },
   // vertex shader
