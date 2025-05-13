@@ -1,7 +1,16 @@
 import React from 'react';
 import SubtitleList from '../SubtitleList';
 
-export default function TextSection({ title, subtitles, text, cardIdx, cardsLength, onCardDot }) {
+export default function TextSection({
+  title,
+  subtitles,
+  text,
+  cardIndex,
+  activeTab,
+  cardsLength,
+  onCardDot
+}) {
+  const cardIdx = cardIndex[activeTab];
   return (
     <div className="text">
       <h3>{title}</h3>

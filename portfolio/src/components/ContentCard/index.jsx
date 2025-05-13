@@ -35,7 +35,7 @@ export default function ContentCard({
   const [mediaIndex, setMediaIndex] = useState({ FIRMWARE: 0, 'GAME DEV': 0 });
 
   const cardIdx = cardIndex[activeTab];
-  
+
   const { width } = useWindowSize();
   const isMobile = width <= 768;
 
@@ -89,7 +89,8 @@ export default function ContentCard({
         title={title}
         subtitles={subtitles}
         text={text}
-        cardIndex={cardIdx}
+        cardIndex={cardIndex}
+        activeTab={activeTab}
         cardsLength={cards.length}
         onCardDot={newIdx => {
           setCardIndex(prev => ({ ...prev, [activeTab]: newIdx }));
